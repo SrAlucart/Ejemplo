@@ -7,346 +7,436 @@
     <title>Document</title>
 </head>
 <style>
-    *{
-        margin: 0;
-        padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500&display=swap");
+
+$primary-color: #ecad29;
+$text-color: #FFFFFFDD;
+
+body {
+  margin: 0;
+  background-color: #1a1a1a;
+  color: $text-color;
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+.card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.6);
+}
+
+#btn {
+  position: absolute;
+  top: 690px;
+  left: 16px;
+  z-index: 99;
+}
+
+.card-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: $text-color;
+
+  padding-left: 16px;
+}
+
+.content-place {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.content-place {
+  font-weight: 500;
+}
+
+.content-title-1,
+.content-title-2 {
+  font-weight: 600;
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+}
+
+.content-start {
+  width: 30px;
+  height: 5px;
+  border-radius: 99px;
+  background-color: $text-color;
+}
+
+.details {
+  z-index: 22;
+  position: absolute;
+  top: 240px;
+  left: 60px;
+
+  .place-box {
+    height: 46px;
+
+    overflow: hidden;
+    .text {
+      padding-top: 16px;
+      font-size: 20px;
+
+      &:before {
+        top: 0;
+        left: 0;
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 4px;
+        border-radius: 99px;
+        background-color: white;
       }
-      body{
-        background-color: #102037;
-        overflow: hidden;
+    }
+  }
+
+  .title-1,
+  .title-2 {
+    font-weight: 600;
+    font-size: 72px;
+    font-family: "Oswald", sans-serif;
+  }
+  .title-box-1,
+  .title-box-2 {
+    margin-top: 2px;
+    height: 100px;
+    overflow: hidden;
+    // background-color: blue;
+  }
+  > .desc {
+    margin-top: 16px;
+    width: 500px;
+  }
+  > .cta {
+    width: 500px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    > .bookmark {
+      border: none;
+      background-color: $primary-color;
+      width: 36px;
+      height: 36px;
+      border-radius: 99px;
+      color: white;
+      display: grid;
+      place-items: center;
+      svg {
+        width: 20px;
+        height: 20px;
       }
-      @-webkit-keyframes snow {
-        0% { opacity: 0; transform: translateY(0px); }
-        20%{ opacity: 1;}
-        100% { opacity: 1; transform: translateY(650px); }
-      }
-      @-moz-keyframes snow {
-        0% { opacity: 0; transform: translateY(0px); }
-        20%{ opacity: 1;}
-        100% { opacity: 1; transform: translateY(650px); }
-      }
-      @keyframes snow {
-        0% { opacity: 0; transform: translateY(0px); }
-        20%{ opacity: 1;}
-        100% { opacity: 1; transform: translateY(650px); }
-      }
-      @-webkit-keyframes astronaut{
-        0%{
-          transform: rotate(0deg);
+    }
+    > .discover {
+      border: 1px solid #ffffff;
+      background-color: transparent;
+      height: 36px;
+      border-radius: 99px;
+      color: #ffffff;
+      padding: 4px 24px;
+      font-size: 12px;
+      margin-left: 16px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 36px;
+  font-weight: 500;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  .svg-container {
+    width: 20px;
+    height: 20px;
+  }
+
+  > div {
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    &:first-child {
+      gap: 10px;
+    }
+    &:last-child {
+      gap: 24px;
+
+      > .active {
+        position: relative;
+        &:after {
+          bottom: -8px;
+          left: 0;
+          right: 0;
+          position: absolute;
+          content: "";
+          height: 3px;
+          border-radius: 99px;
+          background-color: $primary-color;
         }
-        100%{
-          transform: rotate(360deg);
-        }
       }
-      .box-of-star1,
-      .box-of-star2,
-      .box-of-star3,
-      .box-of-star4{
-        width: 100%;
-        position: absolute;
-        z-index: 10;
-        left: 0;
-        transform: translateY(650px);
+    }
+  }
+}
+.indicator {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 5px;
+  z-index: 60;
+  background-color: $primary-color;
+}
+
+.pagination {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: inline-flex;
+
+  > .arrow {
+    z-index: 60;
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    border: 2px solid #ffffff55;
+    display: grid;
+    place-items: center;
+    &:nth-child(2){
+      margin-left: 20px;
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+      color: #ffffff99;
+    }
+  }
+
+  .progress-sub-container{
+    margin-left: 24px;
+    z-index: 60;
+    width: 500px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    .progress-sub-background{
+      width: 500px;
+      height: 3px;
+      background-color: #ffffff33;
+      .progress-sub-foreground{
+      height: 3px;
+      background-color: $primary-color;
       }
-      .box-of-star1{
-        -webkit-animation: snow 5s linear infinite;
-      }
-      .box-of-star2{
-        -webkit-animation: snow 5s -1.64s linear infinite;
-      }
-      .box-of-star3{
-        -webkit-animation: snow 5s -2.30s linear infinite;
-      }
-      .box-of-star4{
-        -webkit-animation: snow 5s -3.30s linear infinite;
-      }
-      .star{
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background-color: #FFF;
-        position: absolute;
-        z-index: 10;
-        opacity: .7;
-      }
-      .star:before{
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: #FFF;
-        position: absolute;
-        z-index: 10;
-        top: 40px;
-        left: 70px;
-        opacity: .7;
-      }
-      .star:after{
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: #FFF;
-        position: absolute;
-        z-index: 10;
-        top: 8px;
-        left: 170px;
-        opacity: .9;
-      }
-      .star-position1{
-        top: 30px;
-        left: 20px;
-      }
-      .star-position2{
-        top: 110px;
-        left: 250px;
-      }
-      .star-position3{
-        top: 60px;
-        left: 570px;
-      }
-      .star-position4{
-        top: 120px;
-        left: 900px;
-      }
-      .star-position5{
-        top: 20px;
-        left: 1120px;
-      }
-      .star-position6{
-        top: 90px;
-        left: 1280px;
-      }
-      .star-position7{
-        top: 30px;
-        left: 1480px;
-      }
-      .astronaut{
-        width: 250px;
-        height: 300px;
-        position: absolute;
-        z-index: 11;
-        top: calc(50% - 150px);
-        left: calc(50% - 125px);
-        -webkit-animation: astronaut 5s linear infinite;
-      }
-      .schoolbag{
-        width: 100px;
-        height: 150px;
-        position: absolute;
-        z-index: 1;
-        top: calc(50% - 75px);
-        left: calc(50% - 50px);
-        background-color: #94b7ca;
-        border-radius: 50px 50px 0 0 / 30px 30px 0 0;
-      }
-      .head{
-        width: 97px;
-        height: 80px;
-        position: absolute;
-        z-index: 3;
-        background: -webkit-linear-gradient(left, #e3e8eb 0%, #e3e8eb 50%, #fbfdfa 50%, #fbfdfa 100%);
-        border-radius: 50%;
-        top: 34px;
-        left: calc(50% - 47.5px);
-      }
-      .head:after{
-        content: "";
-        width: 60px;
-        height: 50px;
-        position: absolute;
-        top: calc(50% - 25px);
-        left: calc(50% - 30px);
-        background: -webkit-linear-gradient(top, #15aece 0%, #15aece 50%, #0391bf 50%, #0391bf 100%);
-        border-radius: 15px;
-      }
-      .head:before{
-        content: "";
-        width: 12px;
-        height: 25px;
-        position: absolute;
-        top: calc(50% - 12.5px);
-        left: -4px;
-        background-color: #618095;
-        border-radius: 5px;
-        box-shadow: 92px 0px 0px #618095;
-      }
-      .body{
-        width: 85px;
-        height: 100px;
-        position: absolute;
-        z-index: 2;
-        background-color: #fffbff;
-        border-radius: 40px / 20px;
-        top: 105px;
-        left: calc(50% - 41px);
-        background: -webkit-linear-gradient(left, #e3e8eb 0%, #e3e8eb 50%, #fbfdfa 50%, #fbfdfa 100%);
-      }
-      .panel{
-        width: 60px;
-        height: 40px;
-        position: absolute;
-        top: 20px;
-        left: calc(50% - 30px);
-        background-color: #b7cceb;
-      }
-      .panel:before{
-        content: "";
-        width: 30px;
-        height: 5px;
-        position: absolute;
-        top: 9px;
-        left: 7px;
-        background-color: #fbfdfa;
-        box-shadow: 0px 9px 0px #fbfdfa, 0px 18px 0px #fbfdfa;
-      }
-      .panel:after{
-        content: "";
-        width: 8px;
-        height: 8px;
-        position: absolute;
-        top: 9px;
-        right: 7px;
-        background-color: #fbfdfa;
-        border-radius: 50%;
-        box-shadow: 0px 14px 0px 2px #fbfdfa;
-      }
-      .arm{
-        width: 80px;
-        height: 30px;
-        position: absolute;
-        top: 121px;
-        z-index: 2;
-      }
-      .arm-left{
-        left: 30px;
-        background-color: #e3e8eb;
-        border-radius: 0 0 0 39px;
-      }
-      .arm-right{
-        right: 30px;
-        background-color: #fbfdfa;
-        border-radius: 0 0 39px 0;
-      }
-      .arm-left:before,
-      .arm-right:before{
-        content: "";
-        width: 30px;
-        height: 70px;
-        position: absolute;
-        top: -40px;
-      }
-      .arm-left:before{
-        border-radius: 50px 50px 0px 120px / 50px 50px 0 110px;
-        left: 0;
-        background-color: #e3e8eb;
-      }
-      .arm-right:before{
-        border-radius: 50px 50px 120px 0 / 50px 50px 110px 0;
-        right: 0;
-        background-color: #fbfdfa;
-      }
-      .arm-left:after,
-      .arm-right:after{
-        content: "";
-        width: 30px;
-        height: 10px;
-        position: absolute;
-        top: -24px;
-      }
-      .arm-left:after{
-        background-color: #6e91a4;
-        left: 0;
-      }
-      .arm-right:after{
-        right: 0;
-        background-color: #b6d2e0;
-      }
-      .leg{
-        width: 30px;
-        height: 40px;
-        position: absolute;
-        z-index: 2;
-        bottom: 70px;
-      }
-      .leg-left{
-        left: 76px;
-        background-color: #e3e8eb;
-        transform: rotate(20deg);
-      }
-      .leg-right{
-        right: 73px;
-        background-color: #fbfdfa;
-        transform: rotate(-20deg);
-      }
-      .leg-left:before,
-      .leg-right:before{
-        content: "";
-        width: 50px;
-        height: 25px;
-        position: absolute;
-        bottom: -26px;
-      }
-      .leg-left:before{
-        left: -20px;
-        background-color: #e3e8eb;
-        border-radius: 30px 0 0 0;
-        border-bottom: 10px solid #6d96ac;
-      }
-      .leg-right:before{
-        right: -20px;
-        background-color: #fbfdfa;
-        border-radius: 0 30px 0 0;
-        border-bottom: 10px solid #b0cfe4;
-      }
+    }
+  }
+
+  .slide-numbers{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    // background-color: #111111;
+    z-index: 60;
+    position: relative;
+  
+    .item{
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      // background: rgb(31, 31, 41);
+      color: white;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      font-weight: bold;
+    }
+  }
+}
+
+
+.cover{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 100;
+}
 </style>
 <body>
-    <div class="box-of-star1">
-        <div class="star star-position1"></div>
-        <div class="star star-position2"></div>
-        <div class="star star-position3"></div>
-        <div class="star star-position4"></div>
-        <div class="star star-position5"></div>
-        <div class="star star-position6"></div>
-        <div class="star star-position7"></div>
-      </div>
-      <div class="box-of-star2">
-        <div class="star star-position1"></div>
-        <div class="star star-position2"></div>
-        <div class="star star-position3"></div>
-        <div class="star star-position4"></div>
-        <div class="star star-position5"></div>
-        <div class="star star-position6"></div>
-        <div class="star star-position7"></div>
-      </div>
-      <div class="box-of-star3">
-        <div class="star star-position1"></div>
-        <div class="star star-position2"></div>
-        <div class="star star-position3"></div>
-        <div class="star star-position4"></div>
-        <div class="star star-position5"></div>
-        <div class="star star-position6"></div>
-        <div class="star star-position7"></div>
-      </div>
-      <div class="box-of-star4">
-        <div class="star star-position1"></div>
-        <div class="star star-position2"></div>
-        <div class="star star-position3"></div>
-        <div class="star star-position4"></div>
-        <div class="star star-position5"></div>
-        <div class="star star-position6"></div>
-        <div class="star star-position7"></div>
-      </div>
-      <div class="astronaut" data-js="astro">
-        <div class="head"></div>
-        <div class="arm arm-left"></div>
-        <div class="arm arm-right"></div>
-        <div class="body">
-          <div class="panel"></div>
+    <div class="indicator"></div>
+
+    <nav>
+      <div>
+        <div class="svg-container">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
+            />
+          </svg>
         </div>
-        <div class="leg leg-left"></div>
-        <div class="leg leg-right"></div>
-        <div class="schoolbag"></div>
+        <div>Globe Express</div>
       </div>
-</body>
+      <div>
+        <div class="active">Home</div>
+        <div>Holidays</div>
+        <div>Destinations</div>
+        <div>Flights</div>
+        <div>Offers</div>
+        <div>Contact</div>
+        <div class="svg-container">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </div>
+        <div class="svg-container">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </div>
+    </nav>
+
+    <div id="demo"></div>
+
+    <div class="details" id="details-even">
+      <div class="place-box">
+        <div class="text">Switzerland Alps</div>
+      </div>
+      <div class="title-box-1"><div class="title-1">SAINT</div></div>
+      <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
+      <div class="desc">
+        Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
+      </div>
+      <div class="cta">
+        <button class="bookmark">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+        <button class="discover">Discover Location</button>
+      </div>
+    </div>
+
+    <div class="details" id="details-odd">
+      <div class="place-box">
+        <div class="text">Switzerland Alps</div>
+      </div>
+      <div class="title-box-1"><div class="title-1">SAINT </div></div>
+      <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
+      <div class="desc">
+        Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
+      </div>
+      <div class="cta">
+        <button class="bookmark">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+        <button class="discover">Discover Location</button>
+      </div>
+    </div>
+
+    <div class="pagination" id="pagination">
+      <div class="arrow arrow-left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+      </div>
+      <div class="arrow arrow-right">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </div>
+      <div class="progress-sub-container" >
+        <div class="progress-sub-background" >
+            <div class="progress-sub-foreground" ></div>
+        </div>
+    </div>
+    <div class="slide-numbers" id="slide-numbers"></div>
+    </div>
+
+    <div class="cover" ></div>
+   
+
+   
+  </body>
 </html>
